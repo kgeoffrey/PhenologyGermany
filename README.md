@@ -29,5 +29,5 @@ mean = phenology.aggregate_data('mean')
 make_horizontal_bar_plot(mean)
 ```
 
-![alt text](https://github.com/kgeoffrey/GermanPhenology/img/example.png "Bar Plot")
+![alt text](https://github.com/kgeoffrey/GermanPhenology/blob/main/img/example.png "Bar Plot")
 

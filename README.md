@@ -23,7 +23,7 @@ Once it has been downloaded you can load it:
 phenology.load_data()
 ```
 
-To make a Bar Plot of run:
+To make a Bar Plot run:
 ```python
 mean = phenology.aggregate_data('mean')
 make_horizontal_bar_plot(mean)

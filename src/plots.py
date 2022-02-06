@@ -66,7 +66,7 @@ def make_horizontal_bar_plot(mean):
     plt.savefig('./img/hbar_plot.pdf',dpi=300, bbox_inches = "tight")
     
 def make_hist_plot(hists):
-    fig, axes = plt.subplots(2, 5, sharex=False, sharey=True, figsize=(figsizes.neurips2021(nrows=1.5)["figure.figsize"]))
+    fig, axes = plt.subplots(2, 5, sharex=True, sharey=True, figsize=(figsizes.neurips2021(nrows=1.5)["figure.figsize"]))
 
     for i, ax in enumerate(axes.flatten()):
         if i < len(hists):
@@ -108,6 +108,12 @@ def make_timeseries_plots(data_mean, data_median, data_std, plot_median=False, p
         model = LinearRegression(fit_intercept=True)
         model.fit(X_mean, y_mean)
         trend_mean = model.predict(X_mean)
+        if season in fault_cols:
+            diff = model.predict(X_mean[X_mean==2019].reshape(-1, 1)) - model.predict(X_mean[X_mean==1991].reshape(-1, 1))
+            print(str(season) + 'prediction 2019-1991 : ' + str(diff))
+        else:
+            diff = model.predict(X_mean[X_mean==2019].reshape(-1, 1)) - model.predict(X_mean[X_mean==1951].reshape(-1, 1))
+            print(str(season) + ' prediction 2019-1951: ' + str(diff))
 
         # trend line median
         if plot_median_trend == True:

@@ -5,9 +5,19 @@ from statsmodels.tsa.stattools import adfuller
 def simple_t_test(mean):
     for col in mean.columns:
         dat = mean[col].dropna()
+        
+        fault_cols = ["Spätsommer", "Winter"]
+        if col in fault_cols: # fix starting years
+            dat = dat[dat.index > 1990]
+            dat = dat[dat.index > 1990]
+            dat = dat[dat.index > 1990]
+            
         #result = adfuller(dat.values)
         slope, intercept, r_value, p_value, std_err = stats.linregress(dat.index,dat)
-        print(col + '\'s p-value :' + str(p_value.round(5)))
+        print(col + '\'s slope estimate : ' + str(slope.round(5)))
+        print(col + '\'s std_err : ' + str(std_err.round(5)))
+        print(col + '\'s p-value : ' + str(p_value.round(5)))
+        
 
 
 def ADF_test(mean):

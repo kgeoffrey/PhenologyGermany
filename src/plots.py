@@ -56,7 +56,7 @@ def make_horizontal_bar_plot(mean):
             ax.barh(data.index, data[c], left=lefts, color = colors[c], edgecolor = colors[c], linewidth=1.5) 
         lefts += data[c]
     plt.margins(x=0, y=0)
-    plt.title('Average Start Days of Phenological Seasons')
+    plt.title('Length of Phenological Seasons in Germany, 1991 to 2019')
     plt.xlabel("Day of Year")
     plt.ylabel("Years")
     labels = list(colors.keys())
@@ -77,13 +77,14 @@ def make_hist_plot(hists):
         else:
             ax.remove()
 
-    fig.suptitle('Total Observation per Season')
+    fig.suptitle('Number of observation per season in CDC historical data')
     fig.text(0.5, -0.02, 'Year', ha='center', va='center')
     fig.text(0.01, 0.5, 'Number of Observations', ha='center', va='center', rotation='vertical')
 
     plt.tight_layout()
     plt.savefig('./img/hist_plot.pdf',dpi=300, bbox_inches = "tight")
 
+    
 def make_timeseries_plots(data_mean, data_median, data_std, plot_median=False, plot_median_trend=False):
     fig, axs = plt.subplots(4, 3, figsize=(figsizes.neurips2021(nrows=3.)["figure.figsize"]))
     axs = axs.ravel()
@@ -137,7 +138,7 @@ def make_timeseries_plots(data_mean, data_median, data_std, plot_median=False, p
     fig.legend(lines, labels, 
                 bbox_to_anchor=(0.525,0.060), loc="lower center", 
                 bbox_transform=fig.transFigure, ncol=1)
-    fig.suptitle('Days since start of year of phenological seasons in Germany', fontsize=12)
+    fig.suptitle('Average starting day in the year of phenological seasons in Germany, 1951-2019', fontsize=12)
     fig.text(0.5, 0.01, 'Year', ha='center', va='center')
     fig.text(-0.0, 0.5, 'Days since start of year', ha='center', va='center', rotation='vertical')
     fig.tight_layout()

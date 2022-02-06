@@ -124,14 +124,14 @@ def make_timeseries_plots(data_mean, data_median, data_std, plot_median=False, p
             trend_median = model.predict(X_median)
 
         # plotting
-        axs[c].plot(data_mean[season].index, data_mean[season], '-', color=colors[season], lw=1.5, label='Mean', alpha=.6)
-        axs[c].fill_between(data_std.index, mean_lower, mean_upper, color=colors[season], alpha=.1, label='1.96 Std Mean') 
-        axs[c].plot(y_mean.index, trend_mean, '--', color='black', lw=1, label="Trend")
+        axs[c].plot(data_mean[season].index, data_mean[season], '-', color=colors[season], lw=1.5, label='Annual Mean', alpha=.6)
+        axs[c].fill_between(data_std.index, mean_lower, mean_upper, color=colors[season], alpha=.15, label='1.96 Std Mean') 
+        axs[c].plot(y_mean.index, trend_mean, '--', color='black', lw=1, label="Mean Trend")
 
         if plot_median == True:
-            axs[c].plot(data_median.index, data_median[season], ':', color='tab:orange', alpha=1, lw=2, label='Median')
+            axs[c].plot(data_median.index, data_median[season], ':', color='tab:orange', alpha=.6, lw=1.5, label='Annual Median')
         if plot_median_trend == True:
-            axs[c].plot(y_median.index, trend_median, '-', color='tab:orange', alpha=1, lw=2, label='Trend Median')
+            axs[c].plot(y_median.index, trend_median, '-', color='tab:orange', alpha=1, lw=1, label='Median Trend')
 
         axs[c].margins(x=0, y=0)
         axs[c].set_title(english_names[season])

@@ -1,4 +1,4 @@
-# GermanPhenology
+# PhenologyGermany
 
 The German National Meteorological Service (DWD) collects annual phenological data, i.e. the seasonal life cycles of plants. In phenology, a subset of these plants is used to mark the beginning of the seasons. For example, the blossoming of apple trees marks the beginning of 'full spring'.  
 
